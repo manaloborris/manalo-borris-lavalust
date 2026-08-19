@@ -7,7 +7,7 @@ class StudentController extends Controller
     public function login()
     {
         $this->call->view('student_login', [
-            'page_title' => 'Student Login'
+            'page_title' => 'Login'
         ]);
     }
 
