@@ -178,6 +178,41 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             letter-spacing: 0.04em;
         }
 
+        .protection-popup {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            z-index: 20;
+            width: min(360px, calc(100% - 32px));
+            padding: 18px 20px;
+            border: 1px solid rgba(255,255,255,0.7);
+            border-radius: 18px;
+            background: rgba(237,243,251,0.94);
+            box-shadow: 12px 12px 24px var(--shadow-dark), -12px -12px 24px var(--shadow-light);
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translate(-50%, 18px) scale(0.96);
+            transition: opacity 180ms ease, transform 180ms ease;
+        }
+
+        .protection-popup.is-visible {
+            opacity: 1;
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .popup-kicker {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--accent-strong);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .popup-message { margin: 0; color: var(--text); font-weight: 700; }
+
         .profile-box {
             padding: 24px;
             border-radius: 22px;
@@ -297,6 +332,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         <div class="loader-ring" aria-label="Loading"></div>
     </div>
 
+    <div class="protection-popup" role="status" aria-live="polite">
+        <span class="popup-kicker">Access Check Complete</span>
+        <p class="popup-message">Middleware protection is active.</p>
+    </div>
+
     <div class="page-shell">
         <div class="neo-card">
             <div class="topbar">
@@ -317,8 +357,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <p class="lead">
                         This Page contains the Information of the Student, For more info you can tap the Student Profile. TY!
                     </p>
-                    <a class="protected-action" href="<?= site_url('student/profile'); ?>">Unlock Protected Profile</a>
-                    <span class="protection-status">Middleware gate: active</span>
+                    <a id="middleware-test" class="protected-action" href="<?= site_url('student/profile'); ?>">Test</a>
+                    <span class="protection-status">Protected route check</span>
                 </div>
 
                 <div class="profile-box">
@@ -336,10 +376,23 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     </div>
 
     <script>
+        var loader = document.querySelector('.page-loader');
+        var popup = document.querySelector('.protection-popup');
+
         document.querySelectorAll('nav a').forEach(function (link) {
             link.addEventListener('click', function () {
-                document.querySelector('.page-loader').classList.add('is-visible');
+                loader.classList.add('is-visible');
             });
+        });
+
+        document.getElementById('middleware-test').addEventListener('click', function (event) {
+            event.preventDefault();
+            popup.classList.add('is-visible');
+
+            window.setTimeout(function () {
+                loader.classList.add('is-visible');
+                window.location.href = event.currentTarget.href;
+            }, 700);
         });
     </script>
 </body>
