@@ -205,8 +205,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <div class="eyebrow">Student Information</div>
                     <h1>Welcome, <?= htmlspecialchars($student['name']); ?></h1>
                     <p class="lead">
-                        This page shows your student details in a clean and modern neomorphic dashboard design.
-                        You can view your profile information and keep track of your academic records efficiently.
+                        This Page contains the Information of the Student, For more info you can tap the Student Profile for more info. TY!
                     </p>
                 </div>
 
