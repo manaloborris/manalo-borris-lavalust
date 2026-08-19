@@ -56,9 +56,19 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         }
 
         .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: 0.04em;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            flex: 0 0 auto;
         }
 
         .brand span {
@@ -251,7 +261,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <div class="page-shell">
         <div class="neo-card">
             <div class="topbar">
-                <div class="brand"><span>Student</span> Portal</div>
+                <div class="brand">
+                    <img class="brand-logo" src="<?= base_url('minsulogo.png'); ?>" alt="Mindoro State University logo">
+                    <span>Student</span> Portal
+                </div>
                 <nav>
                     <a href="<?= site_url('student/profile'); ?>">Student Profile</a>
                     <a href="<?= site_url('student/logout'); ?>">Logout</a>

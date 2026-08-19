@@ -57,8 +57,18 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         }
 
         .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-size: 1.5rem;
             font-weight: 700;
+        }
+
+        .brand-logo {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            flex: 0 0 auto;
         }
 
         .brand span {
@@ -298,7 +308,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <div class="container">
         <div class="neo-card">
             <div class="header">
-                <div class="brand"><span>Student</span> Profile</div>
+                <div class="brand">
+                    <img class="brand-logo" src="<?= base_url('minsulogo.png'); ?>" alt="Mindoro State University logo">
+                    <span>Student</span> Profile
+                </div>
                 <nav>
                     <a href="<?= site_url('student'); ?>">Home</a>
                     <a href="<?= site_url('student/logout'); ?>">Logout</a>
