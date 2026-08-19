@@ -200,7 +200,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             <span><strong>BM</strong><small>Borris Manalo</small></span>
         </div>
         <h1>Viewer Access</h1>
-        <p class="subtitle">Enter your name to view the Borris profile.</p>
+        <p class="subtitle">Enter your name to view Borris profile.</p>
 
         <?php if (!empty($error)): ?>
             <p class="error"><?= htmlspecialchars($error); ?></p>
