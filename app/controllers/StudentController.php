@@ -36,10 +36,10 @@ class StudentController extends Controller
             'year' => '3rd Year',
             'section' => '3-F4',
             'email' => 'manaloborris153@gmail.com',
-            'address' => 'Cebu City, Philippines',
-            'contact' => '+63 912 345 6789',
-            'skills' => ['Web Development', 'PHP', 'UI Design', 'Database Management'],
-            'hobbies' => ['Coding', 'Reading', 'Learning new tech']
+            'address' => 'Canubing 2 Calapan City Oriental Mindoro, Philippines',
+            'contact' => '+63 967 257 4818',
+            'skills' => ['Athletics', '100m', 'Long Jump', 'Triple Jump', 'High Jump'],
+            'events' => ['100m', 'Long Jump', 'Triple Jump', 'High Jump']
         ];
 
         $data = [
