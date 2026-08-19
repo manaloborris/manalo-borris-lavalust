@@ -286,7 +286,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="info-item" style="margin-top:16px;">
-                        <span class="label">Skills</span>
+                        <span class="label">Student Athlete</span>
                         <div class="skills">
                             <?php foreach ($student['skills'] as $skill): ?>
                                 <span><?= htmlspecialchars($skill); ?></span>
