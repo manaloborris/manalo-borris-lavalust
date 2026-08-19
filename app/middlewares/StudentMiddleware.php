@@ -9,8 +9,13 @@ class StudentMiddleware
             session_start();
         }
 
-        if (!isset($_SESSION['student_access']) || $_SESSION['student_access'] !== true) {
+        if (empty($_SESSION['viewer_name'])) {
             redirect('student/login');
+            return;
+        }
+
+        if (!empty($_SESSION['middleware_protection'])) {
+            redirect('student');
             return;
         }
 

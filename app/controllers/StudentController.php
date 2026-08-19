@@ -29,6 +29,7 @@ class StudentController extends Controller
 
         $_SESSION['student_access'] = true;
         $_SESSION['viewer_name'] = $name;
+        $_SESSION['middleware_protection'] = false;
         redirect('student');
     }
 
@@ -41,7 +42,7 @@ class StudentController extends Controller
         $data = [
             'page_title' => 'Student Home',
             'viewer_name' => $_SESSION['viewer_name'] ?? 'Viewer',
-            'protection_enabled' => $_SESSION['student_access'] === true,
+            'protection_enabled' => !empty($_SESSION['middleware_protection']),
             'student' => [
                 'student_id' => 'MCC2024-00160',
                 'name' => 'Borris Manalo',
@@ -69,12 +70,12 @@ class StudentController extends Controller
             exit;
         }
 
-        $_SESSION['student_access'] = !($_SESSION['student_access'] ?? false);
+        $_SESSION['middleware_protection'] = !($_SESSION['middleware_protection'] ?? false);
 
         header('Content-Type: application/json');
         echo json_encode([
-            'enabled' => $_SESSION['student_access'],
-            'message' => $_SESSION['student_access']
+            'enabled' => $_SESSION['middleware_protection'],
+            'message' => $_SESSION['middleware_protection']
                 ? 'Middleware protection is active.'
                 : 'Middleware protection is off.'
         ]);
