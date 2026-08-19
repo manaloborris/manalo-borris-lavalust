@@ -68,8 +68,8 @@ class StudentController extends Controller
             'contact' => '+63 967 257 4818',
             'facebook' => 'https://www.facebook.com/share/1GuCZqnzuW/',
             'profile_picture' => 'profile_pic.jpg',
-            'skills' => ['Athletics', '100m', 'Long Jump', 'Triple Jump', 'High Jump'],
-            'events' => ['100m', 'Long Jump', 'Triple Jump', 'High Jump']
+            'sports' => ['Athletics'],
+            'specialties' => ['100m', 'Long Jump', 'Triple Jump', 'High Jump']
         ];
 
         $data = [
