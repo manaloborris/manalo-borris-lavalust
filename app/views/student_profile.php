@@ -79,6 +79,18 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             background: var(--panel);
             box-shadow: 7px 7px 15px var(--shadow-dark), -7px -7px 15px var(--shadow-light);
             font-weight: 600;
+            transition: transform 180ms ease, color 180ms ease, box-shadow 180ms ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-strong);
+            transform: translateY(-3px);
+            box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+        }
+
+        nav a:active {
+            transform: translateY(1px);
+            box-shadow: inset 4px 4px 8px var(--shadow-dark), inset -4px -4px 8px var(--shadow-light);
         }
 
         .content {
@@ -98,17 +110,20 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         }
 
         .avatar {
-            width: 128px;
-            height: 128px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             margin: 0 auto 18px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-            display: grid;
-            place-items: center;
+            display: block;
+            object-fit: cover;
             box-shadow: 0 0 0 12px rgba(239,108,66,0.12);
-            color: #fff;
-            font-size: 2.8rem;
-            font-weight: 700;
+            border: 5px solid var(--panel);
+            transition: transform 220ms ease, box-shadow 220ms ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 0 0 12px rgba(239,108,66,0.16), 0 14px 24px rgba(30,41,59,0.2);
         }
 
         .profile-title {
@@ -174,6 +189,30 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             overflow-wrap: anywhere;
         }
 
+        .facebook-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 6px 6px 12px var(--shadow-dark), -6px -6px 12px var(--shadow-light);
+            transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        .facebook-link:hover {
+            background: var(--accent-strong);
+            transform: translateY(-2px);
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+        }
+
+        .facebook-link:active {
+            transform: translateY(1px);
+            box-shadow: inset 4px 4px 8px rgba(171,80,45,0.45), inset -4px -4px 8px rgba(255,255,255,0.45);
+        }
+
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -235,7 +274,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
             <div class="content">
                 <aside class="profile-aside">
-                    <div class="avatar">BM</div>
+                    <img class="avatar" src="<?= site_url($student['profile_picture']); ?>" alt="<?= htmlspecialchars($student['name']); ?> profile picture">
                     <div class="profile-title"><?= htmlspecialchars($student['name']); ?></div>
                     <div class="badge">Verified Student</div>
                 </aside>
@@ -282,6 +321,13 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                         <div class="info-item">
                             <span class="label">Contact</span>
                             <div class="value"><?= htmlspecialchars($student['contact']); ?></div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="label">Facebook</span>
+                            <div class="value">
+                                <a class="facebook-link" href="<?= htmlspecialchars($student['facebook']); ?>" target="_blank" rel="noopener noreferrer">View Facebook Profile</a>
+                            </div>
                         </div>
                     </div>
 

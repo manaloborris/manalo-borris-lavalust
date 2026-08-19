@@ -139,7 +139,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     <main class="login-card">
         <div class="brand"><span>Student</span> Portal</div>
         <div class="avatar">SP</div>
-        <h1>Student Access</h1>
+        <h1>Viewer Access</h1>
         <p class="subtitle">Enter your name to view the student profile.</p>
 
         <?php if (!empty($error)): ?>

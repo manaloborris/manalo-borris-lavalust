@@ -65,6 +65,8 @@ class StudentController extends Controller
             'email' => 'manaloborris153@gmail.com',
             'address' => 'Canubing 2 Calapan City Oriental Mindoro, Philippines',
             'contact' => '+63 967 257 4818',
+            'facebook' => 'https://www.facebook.com/share/1GuCZqnzuW/',
+            'profile_picture' => 'profile_pic.jpg',
             'skills' => ['Athletics', '100m', 'Long Jump', 'Triple Jump', 'High Jump'],
             'events' => ['100m', 'Long Jump', 'Triple Jump', 'High Jump']
         ];
