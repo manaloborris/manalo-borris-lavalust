@@ -50,17 +50,39 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         .brand span { color: var(--accent-strong); }
 
         .avatar {
-            width: 92px;
-            height: 92px;
+            width: 100%;
+            max-width: 260px;
+            height: 86px;
             margin: 0 auto 24px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: linear-gradient(145deg, var(--accent), var(--accent-strong));
-            color: #fff;
-            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 10px;
+            border-radius: 18px;
+            background: linear-gradient(145deg, var(--panel), #dde6f2);
+            color: var(--text);
+            text-align: left;
+            box-shadow: 8px 8px 16px var(--shadow-dark), -8px -8px 16px var(--shadow-light);
+        }
+
+        .avatar img {
+            width: 64px;
+            height: 64px;
+            flex: 0 0 auto;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .avatar strong { display: block; font-size: 1.05rem; }
+
+        .avatar small {
+            display: block;
+            margin-top: 4px;
+            color: var(--muted);
+            font-size: 0.72rem;
             font-weight: 700;
-            box-shadow: 0 0 0 10px rgba(239,108,66,0.12);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
         }
 
         h1 { margin: 0 0 10px; font-size: 2rem; }
@@ -154,7 +176,9 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
             .brand { margin-bottom: 26px; }
 
-            .avatar { width: 78px; height: 78px; margin-bottom: 20px; font-size: 1.7rem; }
+            .avatar { max-width: 240px; height: 78px; margin-bottom: 20px; }
+
+            .avatar img { width: 56px; height: 56px; }
 
             h1 { font-size: 1.7rem; }
 
@@ -171,7 +195,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
     <main class="login-card">
         <div class="brand"><span>Student</span> Portal</div>
-        <div class="avatar">SP</div>
+        <div class="avatar">
+            <img src="<?= base_url('profile_pic.jpg'); ?>" alt="Borris Manalo profile picture">
+            <span><strong>BM</strong><small>Borris Manalo</small></span>
+        </div>
         <h1>Viewer Access</h1>
         <p class="subtitle">Enter your name to view the Borris profile.</p>
 
