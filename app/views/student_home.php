@@ -141,14 +141,11 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            background: linear-gradient(145deg, var(--accent), var(--accent-strong));
-            display: grid;
-            place-items: center;
-            font-size: 2.4rem;
-            color: white;
-            font-weight: 700;
+            display: block;
+            object-fit: cover;
             margin: 0 auto 18px;
             box-shadow: 0 0 0 10px rgba(239,108,66,0.12);
+            border: 4px solid var(--panel);
         }
 
         .profile-box h2 {
@@ -238,7 +235,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                 </div>
 
                 <div class="profile-box">
-                    <div class="avatar">BM</div>
+                    <img class="avatar" src="<?= base_url($student['profile_picture']); ?>" alt="<?= htmlspecialchars($student['name']); ?> profile picture">
                     <h2><?= htmlspecialchars($student['name']); ?></h2>
                     <div class="student-mini">
                         <div><strong>Student ID</strong><span><?= htmlspecialchars($student['student_id']); ?></span></div>

@@ -47,7 +47,8 @@ class StudentController extends Controller
                 'course' => 'BS Information Technology',
                 'year' => '3rd Year',
                 'section' => '3-F4',
-                'email' => 'manaloborris153@gmail.com'
+                'email' => 'manaloborris153@gmail.com',
+                'profile_picture' => 'profile_pic.jpg'
             ]
         ];
 
