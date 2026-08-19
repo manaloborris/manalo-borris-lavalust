@@ -387,11 +387,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
         document.getElementById('middleware-test').addEventListener('click', function (event) {
             event.preventDefault();
+            var targetUrl = event.currentTarget.href;
             popup.classList.add('is-visible');
 
             window.setTimeout(function () {
                 loader.classList.add('is-visible');
-                window.location.href = event.currentTarget.href;
+                window.location.href = targetUrl;
             }, 700);
         });
     </script>
