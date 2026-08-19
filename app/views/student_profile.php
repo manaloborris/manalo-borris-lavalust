@@ -229,6 +229,35 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             font-weight: 700;
         }
 
+        .page-loader {
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            display: grid;
+            place-items: center;
+            background: rgba(231,237,245,0.86);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 180ms ease;
+        }
+
+        .page-loader.is-visible { opacity: 1; pointer-events: auto; }
+
+        .loader-ring {
+            width: 46px;
+            height: 46px;
+            border: 4px solid rgba(239,108,66,0.2);
+            border-top-color: var(--accent-strong);
+            border-radius: 50%;
+            animation: spin 520ms linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (prefers-reduced-motion: reduce) {
+            .page-loader, .loader-ring { transition: none; animation: none; }
+        }
+
         @media (max-width: 760px) {
             .content {
                 grid-template-columns: 1fr;
@@ -262,6 +291,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     </style>
 </head>
 <body>
+    <div class="page-loader" aria-hidden="true">
+        <div class="loader-ring" aria-label="Loading"></div>
+    </div>
+
     <div class="container">
         <div class="neo-card">
             <div class="header">
@@ -281,48 +314,39 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
                 <section class="info-panel">
                     <h1>Student Information</h1>
-
                     <div class="info-grid">
                         <div class="info-item">
                             <span class="label">Student ID</span>
                             <div class="value"><?= htmlspecialchars($student['student_id']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Name</span>
                             <div class="value"><?= htmlspecialchars($student['name']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Course</span>
                             <div class="value"><?= htmlspecialchars($student['course']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Year Level</span>
                             <div class="value"><?= htmlspecialchars($student['year']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Section</span>
                             <div class="value"><?= htmlspecialchars($student['section']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Email</span>
                             <div class="value"><?= htmlspecialchars($student['email']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Address</span>
                             <div class="value"><?= htmlspecialchars($student['address']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Contact</span>
                             <div class="value"><?= htmlspecialchars($student['contact']); ?></div>
                         </div>
-
                         <div class="info-item">
                             <span class="label">Facebook</span>
                             <div class="value">
@@ -343,5 +367,13 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             </div>
         </div>
     </div>
+
+    <script>
+        document.querySelectorAll('nav a, .facebook-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                document.querySelector('.page-loader').classList.add('is-visible');
+            });
+        });
+    </script>
 </body>
 </html>
