@@ -56,6 +56,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 | LavaLust Version
 | -------------------------------------------------------------------
 */
+require_once APP_DIR . 'middlewares/StudentMiddleware.php';
+
 $config['version']                 = '4.6.0';
 
 /*
@@ -217,6 +219,10 @@ $config['language'] 				= 'en-US';
 |
 */
 $config['subclass_prefix']          = 'MY_';
+
+$config['middlewares'] = [
+    'student' => new StudentMiddleware()
+];
 
 /*
 |--------------------------------------------------------------------------
