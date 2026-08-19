@@ -100,6 +100,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             border-radius: 24px;
             background: linear-gradient(135deg, var(--panel-strong), var(--panel));
             box-shadow: inset 4px 4px 12px rgba(255,255,255,0.6), inset -6px -6px 12px rgba(182,194,209,0.5);
+            min-width: 0;
         }
 
         .eyebrow {
@@ -118,6 +119,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         h1 {
             font-size: clamp(2.2rem, 3vw, 3.5rem);
             margin: 0 0 18px;
+            overflow-wrap: anywhere;
         }
 
         .lead {
@@ -132,6 +134,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             border-radius: 22px;
             background: linear-gradient(145deg, #edf3fb, #dfeaf7);
             box-shadow: 10px 10px 20px var(--shadow-dark), -10px -10px 20px var(--shadow-light);
+            min-width: 0;
         }
 
         .avatar {
@@ -151,6 +154,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         .profile-box h2 {
             text-align: center;
             margin-bottom: 22px;
+            overflow-wrap: anywhere;
         }
 
         .student-mini {
@@ -167,6 +171,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             padding: 10px 12px;
             border-radius: 12px;
             background: rgba(255,255,255,0.25);
+        }
+
+        .student-mini span {
+            min-width: 0;
+            overflow-wrap: anywhere;
+            text-align: right;
         }
 
         .student-mini strong {
@@ -186,6 +196,24 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             nav {
                 justify-content: center;
             }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 18px 12px; }
+
+            .page-shell { width: 100%; padding: 20px 0; }
+
+            .neo-card { padding: 22px 16px; border-radius: 22px; }
+
+            .topbar { margin-bottom: 18px; }
+
+            nav a { padding: 11px 13px; font-size: 0.9rem; }
+
+            .hero { gap: 20px; margin-top: 18px; }
+
+            .hero-copy, .profile-box { padding: 20px 16px; }
+
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>

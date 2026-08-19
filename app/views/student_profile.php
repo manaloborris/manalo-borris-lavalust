@@ -86,6 +86,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             grid-template-columns: 280px 1fr;
             gap: 28px;
             padding: 32px;
+            min-width: 0;
         }
 
         .profile-aside {
@@ -133,17 +134,19 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             border-radius: 24px;
             background: linear-gradient(145deg, #edf3fb, #dde8f5);
             box-shadow: inset 8px 8px 16px rgba(255,255,255,0.5), inset -10px -10px 18px rgba(182,194,209,0.5);
+            min-width: 0;
         }
 
         h1 {
             margin: 0 0 20px;
             font-size: clamp(2rem, 4vw, 2.6rem);
             letter-spacing: -0.04em;
+            overflow-wrap: anywhere;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 16px;
         }
 
@@ -168,6 +171,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             font-size: 1rem;
             font-weight: 700;
             line-height: 1.5;
+            overflow-wrap: anywhere;
         }
 
         .skills {
@@ -199,6 +203,22 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                 justify-content: center;
                 text-align: center;
             }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 20px 12px; }
+
+            .header { padding: 22px 18px; }
+
+            nav a { padding: 11px 13px; font-size: 0.9rem; }
+
+            .content { gap: 20px; padding: 20px 16px; }
+
+            .profile-aside, .info-panel { padding: 20px 16px; }
+
+            .info-grid { gap: 12px; }
+
+            .info-item { padding: 14px; }
         }
     </style>
 </head>

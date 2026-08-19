@@ -117,6 +117,22 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             color: #c2410c;
             font-weight: 700;
         }
+
+        @media (max-width: 480px) {
+            body { padding: 16px 12px; }
+
+            .login-card { padding: 28px 20px; border-radius: 24px; }
+
+            .brand { margin-bottom: 26px; }
+
+            .avatar { width: 78px; height: 78px; margin-bottom: 20px; font-size: 1.7rem; }
+
+            h1 { font-size: 1.7rem; }
+
+            .subtitle { margin-bottom: 24px; }
+
+            input, button { padding: 14px; }
+        }
     </style>
 </head>
 <body>
