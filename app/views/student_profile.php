@@ -274,7 +274,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
             <div class="content">
                 <aside class="profile-aside">
-                    <img class="avatar" src="<?= site_url($student['profile_picture']); ?>" alt="<?= htmlspecialchars($student['name']); ?> profile picture">
+                    <img class="avatar" src="<?= base_url($student['profile_picture']); ?>" alt="<?= htmlspecialchars($student['name']); ?> profile picture">
                     <div class="profile-title"><?= htmlspecialchars($student['name']); ?></div>
                     <div class="badge">Verified Student</div>
                 </aside>
