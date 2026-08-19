@@ -139,6 +139,45 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             margin-bottom: 22px;
         }
 
+        .protected-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 17px;
+            border-radius: 14px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 7px 7px 15px var(--shadow-dark), -7px -7px 15px var(--shadow-light);
+            transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        .protected-action::before {
+            content: "◆";
+            font-size: 0.72rem;
+        }
+
+        .protected-action:hover {
+            background: var(--accent-strong);
+            transform: translateY(-2px);
+            box-shadow: 9px 9px 18px var(--shadow-dark), -9px -9px 18px var(--shadow-light);
+        }
+
+        .protected-action:active {
+            transform: translateY(1px);
+            box-shadow: inset 4px 4px 8px rgba(171,80,45,0.45), inset -4px -4px 8px rgba(255,255,255,0.45);
+        }
+
+        .protection-status {
+            display: block;
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
         .profile-box {
             padding: 24px;
             border-radius: 22px;
@@ -278,6 +317,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <p class="lead">
                         This Page contains the Information of the Student, For more info you can tap the Student Profile. TY!
                     </p>
+                    <a class="protected-action" href="<?= site_url('student/profile'); ?>">Unlock Protected Profile</a>
+                    <span class="protection-status">Middleware gate: active</span>
                 </div>
 
                 <div class="profile-box">
