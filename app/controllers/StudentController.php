@@ -4,19 +4,45 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class StudentController extends Controller
 {
+    public function login()
+    {
+        $this->call->view('student_login', [
+            'page_title' => 'Student Login'
+        ]);
+    }
+
+    public function loginSubmit()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $name = trim($_POST['name'] ?? '');
+
+        if ($name === '') {
+            $this->call->view('student_login', [
+                'page_title' => 'Student Login',
+                'error' => 'Please enter your name.'
+            ]);
+            return;
+        }
+
+        $_SESSION['student_access'] = true;
+        $_SESSION['student_name'] = $name;
+        redirect('student');
+    }
+
     public function index()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
-        $_SESSION['student_access'] = true;
-
         $data = [
             'page_title' => 'Student Home',
             'student' => [
                 'student_id' => 'MCC2024-00160',
-                'name' => 'Borris Manalo',
+                'name' => $_SESSION['student_name'] ?? 'Student',
                 'course' => 'BS Information Technology',
                 'year' => '3rd Year',
                 'section' => '3-F4',
@@ -31,7 +57,7 @@ class StudentController extends Controller
     {
         $student = [
             'student_id' => 'MCC2024-00160',
-            'name' => 'Borris Manalo',
+            'name' => $_SESSION['student_name'] ?? 'Student',
             'course' => 'BS Information Technology',
             'year' => '3rd Year',
             'section' => '3-F4',
@@ -48,5 +74,16 @@ class StudentController extends Controller
         ];
 
         $this->call->view('student_profile', $data);
+    }
+
+    public function logout()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        session_unset();
+        session_destroy();
+        redirect('student/login');
     }
 }

@@ -195,8 +195,8 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             <div class="topbar">
                 <div class="brand"><span>Student</span> Portal</div>
                 <nav>
-                    <a href="<?= site_url('student'); ?>">Home</a>
                     <a href="<?= site_url('student/profile'); ?>">Student Profile</a>
+                    <a href="<?= site_url('student/logout'); ?>">Logout</a>
                 </nav>
             </div>
 
@@ -205,7 +205,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <div class="eyebrow">Student Information</div>
                     <h1>Welcome, <?= htmlspecialchars($student['name']); ?></h1>
                     <p class="lead">
-                        This Page contains the Information of the Student, For more info you can tap the Student Profile for more info. TY!
+                        This Page contains the Information of the Student, For more info you can tap the Student Profile. TY!
                     </p>
                 </div>
 

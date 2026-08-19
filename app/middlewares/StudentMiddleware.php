@@ -10,7 +10,7 @@ class StudentMiddleware
         }
 
         if (!isset($_SESSION['student_access']) || $_SESSION['student_access'] !== true) {
-            redirect('student');
+            redirect('student/login');
             return;
         }
 
