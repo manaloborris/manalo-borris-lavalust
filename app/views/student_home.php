@@ -359,12 +359,12 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <div class="eyebrow">Student Information</div>
                     <h1>Welcome, <?= htmlspecialchars($viewer_name ?? 'Viewer'); ?></h1>
                     <p class="lead">
-                        This Page contains the Information of the Student, For more info you can tap the Student Profile. TY!
+                        This Page contains the Information of Borris, For more info you can tap the Student Profile. TY!
                     </p>
                     <button id="middleware-toggle" class="protected-action <?= !empty($protection_enabled) ? '' : 'is-off'; ?>" type="button" data-toggle-url="<?= site_url('student/protection/toggle'); ?>">
                         Protection: <?= !empty($protection_enabled) ? 'On' : 'Off'; ?>
                     </button>
-                    <span class="protection-status">Toggle access, then open Student Profile</span>
+                    <span class="protection-status">Toggle it off, then open the Student Profile</span>
                 </div>
 
                 <div class="profile-box">
