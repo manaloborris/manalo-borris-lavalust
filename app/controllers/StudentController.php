@@ -28,7 +28,7 @@ class StudentController extends Controller
         }
 
         $_SESSION['student_access'] = true;
-        $_SESSION['student_name'] = $name;
+        $_SESSION['viewer_name'] = $name;
         redirect('student');
     }
 
@@ -40,9 +40,10 @@ class StudentController extends Controller
 
         $data = [
             'page_title' => 'Student Home',
+            'viewer_name' => $_SESSION['viewer_name'] ?? 'Viewer',
             'student' => [
                 'student_id' => 'MCC2024-00160',
-                'name' => $_SESSION['student_name'] ?? 'Student',
+                'name' => 'Borris Manalo',
                 'course' => 'BS Information Technology',
                 'year' => '3rd Year',
                 'section' => '3-F4',
@@ -57,7 +58,7 @@ class StudentController extends Controller
     {
         $student = [
             'student_id' => 'MCC2024-00160',
-            'name' => $_SESSION['student_name'] ?? 'Student',
+            'name' => 'Borris Manalo',
             'course' => 'BS Information Technology',
             'year' => '3rd Year',
             'section' => '3-F4',

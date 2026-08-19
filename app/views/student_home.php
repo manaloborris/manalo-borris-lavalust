@@ -231,7 +231,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             <div class="hero">
                 <div class="hero-copy">
                     <div class="eyebrow">Student Information</div>
-                    <h1>Welcome, <?= htmlspecialchars($student['name']); ?></h1>
+                    <h1>Welcome, <?= htmlspecialchars($viewer_name ?? 'Viewer'); ?></h1>
                     <p class="lead">
                         This Page contains the Information of the Student, For more info you can tap the Student Profile. TY!
                     </p>
