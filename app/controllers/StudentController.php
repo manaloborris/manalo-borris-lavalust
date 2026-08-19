@@ -41,6 +41,7 @@ class StudentController extends Controller
         $data = [
             'page_title' => 'Student Home',
             'viewer_name' => $_SESSION['viewer_name'] ?? 'Viewer',
+            'protection_enabled' => $_SESSION['student_access'] === true,
             'student' => [
                 'student_id' => 'MCC2024-00160',
                 'name' => 'Borris Manalo',
@@ -53,6 +54,31 @@ class StudentController extends Controller
         ];
 
         $this->call->view('student_home', $data);
+    }
+
+    public function toggleProtection()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (empty($_SESSION['viewer_name'])) {
+            http_response_code(403);
+            header('Content-Type: application/json');
+            echo json_encode(['enabled' => false, 'message' => 'Viewer session required.']);
+            exit;
+        }
+
+        $_SESSION['student_access'] = !($_SESSION['student_access'] ?? false);
+
+        header('Content-Type: application/json');
+        echo json_encode([
+            'enabled' => $_SESSION['student_access'],
+            'message' => $_SESSION['student_access']
+                ? 'Middleware protection is active.'
+                : 'Middleware protection is off.'
+        ]);
+        exit;
     }
 
     public function profile()

@@ -169,6 +169,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             box-shadow: inset 4px 4px 8px rgba(171,80,45,0.45), inset -4px -4px 8px rgba(255,255,255,0.45);
         }
 
+        .protected-action.is-off {
+            background: var(--muted);
+        }
+
         .protection-status {
             display: block;
             margin-top: 14px;
@@ -357,8 +361,10 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <p class="lead">
                         This Page contains the Information of the Student, For more info you can tap the Student Profile. TY!
                     </p>
-                    <a id="middleware-test" class="protected-action" href="<?= site_url('student/profile'); ?>">Test</a>
-                    <span class="protection-status">Protected route check</span>
+                    <button id="middleware-toggle" class="protected-action <?= !empty($protection_enabled) ? '' : 'is-off'; ?>" type="button" data-toggle-url="<?= site_url('student/protection/toggle'); ?>">
+                        Protection: <?= !empty($protection_enabled) ? 'On' : 'Off'; ?>
+                    </button>
+                    <span class="protection-status">Toggle access, then open Student Profile</span>
                 </div>
 
                 <div class="profile-box">
@@ -385,15 +391,18 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             });
         });
 
-        document.getElementById('middleware-test').addEventListener('click', function (event) {
-            event.preventDefault();
-            var targetUrl = event.currentTarget.href;
-            popup.classList.add('is-visible');
+        document.getElementById('middleware-toggle').addEventListener('click', function (event) {
+            var toggle = event.currentTarget;
 
-            window.setTimeout(function () {
-                loader.classList.add('is-visible');
-                window.location.href = targetUrl;
-            }, 700);
+            fetch(toggle.dataset.toggleUrl)
+                .then(function (response) { return response.json(); })
+                .then(function (result) {
+                    toggle.textContent = 'Protection: ' + (result.enabled ? 'On' : 'Off');
+                    toggle.classList.toggle('is-off', !result.enabled);
+                    popup.querySelector('.popup-message').textContent = result.message;
+                    popup.classList.add('is-visible');
+                    window.setTimeout(function () { popup.classList.remove('is-visible'); }, 1800);
+                });
         });
     </script>
 </body>

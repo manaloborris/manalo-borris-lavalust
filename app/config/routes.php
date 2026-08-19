@@ -48,5 +48,6 @@ $router->get('/', 'StudentController::login');
 $router->get('/student/login', 'StudentController::login');
 $router->post('/student/login', 'StudentController::loginSubmit');
 $router->get('/student', 'StudentController::index')->middleware('student');
+$router->get('/student/protection/toggle', 'StudentController::toggleProtection');
 $router->get('/student/profile', 'StudentController::profile')->middleware('student');
 $router->get('/student/logout', 'StudentController::logout')->middleware('student');
