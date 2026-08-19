@@ -124,14 +124,14 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         <div class="brand"><span>Student</span> Portal</div>
         <div class="avatar">SP</div>
         <h1>Student Access</h1>
-        <p class="subtitle">Enter your name to view your student profile.</p>
+        <p class="subtitle">Enter your name to view the student profile.</p>
 
         <?php if (!empty($error)): ?>
             <p class="error"><?= htmlspecialchars($error); ?></p>
         <?php endif; ?>
 
         <form method="post" action="<?= site_url('student/login'); ?>">
-            <label for="name">Student name</label>
+            <label for="name">Viewer Name</label>
             <input id="name" name="name" type="text" placeholder="Enter your name" required autofocus>
             <button type="submit">View Student Profile</button>
         </form>
