@@ -154,6 +154,26 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
             text-transform: uppercase;
         }
 
+        .profile-quote {
+            max-width: 220px;
+            min-height: 48px;
+            margin: 18px auto 0;
+            color: var(--muted);
+            font-size: 0.86rem;
+            font-style: italic;
+            line-height: 1.55;
+        }
+
+        .profile-quote::after {
+            content: "|";
+            margin-left: 3px;
+            color: var(--accent-strong);
+            font-style: normal;
+            animation: blink 700ms steps(1) infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
         .info-panel {
             padding: 22px;
             border-radius: 24px;
@@ -265,7 +285,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
         @keyframes spin { to { transform: rotate(360deg); } }
 
         @media (prefers-reduced-motion: reduce) {
-            .page-loader, .loader-ring { transition: none; animation: none; }
+            .page-loader, .loader-ring, .profile-quote::after { transition: none; animation: none; }
         }
 
         @media (max-width: 760px) {
@@ -323,6 +343,7 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
                     <img class="avatar" src="<?= base_url($student['profile_picture']); ?>" alt="<?= htmlspecialchars($student['name']); ?> profile picture">
                     <div class="profile-title"><?= htmlspecialchars($student['name']); ?></div>
                     <div class="badge">Verified Student</div>
+                    <p class="profile-quote" data-quote="It's not how you drive, It's how you arrive"></p>
                 </aside>
 
                 <section class="info-panel">
@@ -391,6 +412,25 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
     </div>
 
     <script>
+        var quote = document.querySelector('.profile-quote');
+        var quoteText = quote.dataset.quote;
+        var quoteIndex = 0;
+
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            quote.textContent = quoteText;
+        } else {
+            function typeQuote() {
+                quote.textContent = quoteText.slice(0, quoteIndex);
+                quoteIndex += 1;
+
+                if (quoteIndex <= quoteText.length) {
+                    window.setTimeout(typeQuote, 48);
+                }
+            }
+
+            typeQuote();
+        }
+
         document.querySelectorAll('nav a, .facebook-link').forEach(function (link) {
             link.addEventListener('click', function () {
                 document.querySelector('.page-loader').classList.add('is-visible');
